@@ -22,7 +22,9 @@
 
   <!-- 页面元数据 -->
   
-  <title>Hello World - Lemon_Fruit</title>
+  <title>hexo博客搭建感想 - Lemon_Fruit</title>
+  
+    <meta name="keywords" content="随笔">
   
 
   
@@ -456,7 +458,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title">
-        Hello World
+        hexo博客搭建感想
       </h1>
       <div class='new-meta-box'>
         
@@ -480,7 +482,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2021年3月3日</p>
+    <p>发布于：2021年4月8日</p>
   </a>
 </div>
 
@@ -515,19 +517,49 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+  <h1 id="CPU上下文切换"><a href="#CPU上下文切换" class="headerlink" title="CPU上下文切换"></a>CPU上下文切换</h1><blockquote>
+<p>什么是CPU上下文</p>
+</blockquote>
+<p>​ CPU 上下文就是<strong>CPU 寄存器</strong>和__程序计数器__，它们都是 CPU 在运行任何任务前，必须的依赖环境.</p>
+<blockquote>
+<p>CPU上下文切换的类型：</p>
+</blockquote>
+<ul>
+<li><p>进程上下文切换</p>
+</li>
+<li><p>线程上下文切换</p>
+</li>
+<li><p>中断上下文切换</p>
+</li>
+</ul>
+<blockquote>
+<p>系统调用</p>
+</blockquote>
+<ul>
+<li>从用户态到内核态转变，需要用到<strong>系统调用</strong></li>
+<li><strong>一次系统调用的过程，其实发生了两次CPU上下文问切换</strong></li>
+<li><strong>系统调用过程中一直是同一个进程在运行</strong></li>
+</ul>
+<blockquote>
+<p>进程上下文切换</p>
+</blockquote>
+<ul>
+<li>进程是由内核来管理和调度的，进程的切换只能发生在内核态</li>
+</ul>
+<blockquote>
+<p>线程上下文切换</p>
+</blockquote>
+<ul>
+<li>线程是调度的基本单位，而进程则是资源拥有的基本单位</li>
+<li>线程有自己的私有数据，比如栈和寄存器</li>
+</ul>
+<blockquote>
+<p>中断上下文切换</p>
+</blockquote>
+<ul>
+<li>对同一个CPU，中断处理比进程拥有跟高的优先级</li>
+<li>中断上下文切换并不涉及到进程的用户态</li>
+</ul>
 
   
   
@@ -545,7 +577,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               
-                <p>本文永久链接是：<a href=https://lemon-fruit.github.io/2021/03/03/hello-world/>https://lemon-fruit.github.io/2021/03/03/hello-world/</a></p>
+                <p>本文永久链接是：<a href=https://lemon-fruit.github.io/2021/04/08/CPU%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2/>https://lemon-fruit.github.io/2021/04/08/CPU%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2/</a></p>
               
             
           </blockquote>
@@ -562,10 +594,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-03T11:39:33+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-08T17:52:21+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2021年3月3日</p>
+    <p>更新于：2021年4月8日</p>
   </a>
 </div>
 
@@ -573,6 +605,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         
           
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E9%9A%8F%E7%AC%94/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>随笔</p></a></div>
+
 
         
       
@@ -584,7 +619,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lemon-fruit.github.io/2021/03/03/hello-world/&title=Hello World - Lemon_Fruit&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lemon-fruit.github.io/2021/04/08/CPU%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2/&title=hexo博客搭建感想 - Lemon_Fruit&summary="
           
           >
           
@@ -596,7 +631,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://lemon-fruit.github.io/2021/03/03/hello-world/&title=Hello World - Lemon_Fruit&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://lemon-fruit.github.io/2021/04/08/CPU%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2/&title=hexo博客搭建感想 - Lemon_Fruit&summary="
           
           >
           
@@ -608,7 +643,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://lemon-fruit.github.io/2021/03/03/hello-world/&title=Hello World - Lemon_Fruit&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://lemon-fruit.github.io/2021/04/08/CPU%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2/&title=hexo博客搭建感想 - Lemon_Fruit&summary="
           
           >
           
@@ -643,28 +678,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2021/04/08/CPU%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>hexo博客搭建感想</p>
-          <p class='content'>CPU上下文切换
-什么是CPU上下文
-
-​ CPU 上下文就是CPU 寄存器和__程序计数器__，它们都是 CPU 在运行任何任务前，必须的依赖环境.
-
-CPU上下文切换的类型：
-
-
-进程上下文...</p>
-        </a>
       
-      
-        <a class='next' href='/2020/04/30/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%84%9F%E6%83%B3/'>
-          <p class='title'>hexo博客搭建感想<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>Hexo博客搭建感想
-
-一. 搭建过程
-因为以前尝试过io的搭建，所以初始绑定ssh的步骤，就跳过了。 
-
-hexo的初始化先下载hexo部署插件在进行配置，比如修改根目录下的config.ym...</p>
+        <a class='next' href='/2021/03/03/hello-world/'>
+          <p class='title'>Hello World<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any ...</p>
         </a>
       
     </div>
@@ -707,7 +724,7 @@ hexo的初始化先下载hexo部署插件在进行配置，比如修改根目录
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        
     </div>
   </section>
 
@@ -726,7 +743,7 @@ hexo的初始化先下载hexo部署插件在进行配置，比如修改根目录
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="Hello World";
+  pdata.postTitle="hexo博客搭建感想";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
