@@ -28,8 +28,6 @@
   
 
   
-    <meta name="description" content="MySQL">
-  
 
   <!-- feed -->
   
@@ -519,7 +517,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><span id="more"></span>
+  <span id="more"></span>
 
 <h2 id="1-使用MySQL"><a href="#1-使用MySQL" class="headerlink" title="1. 使用MySQL"></a>1. 使用MySQL</h2><h3 id="1-1-连接"><a href="#1-1-连接" class="headerlink" title="1.1 连接"></a>1.1 连接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
 
@@ -629,7 +627,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </tr>
 </tbody></table>
 <h4 id="4-2-1-检查单个值"><a href="#4-2-1-检查单个值" class="headerlink" title="4.2.1 检查单个值"></a>4.2.1 检查单个值</h4><h4 id="4-2-2-不匹配检查"><a href="#4-2-2-不匹配检查" class="headerlink" title="4.2.2 不匹配检查"></a>4.2.2 不匹配检查</h4><h4 id="4-2-3-范围值检查"><a href="#4-2-3-范围值检查" class="headerlink" title="4.2.3 范围值检查"></a>4.2.3 范围值检查</h4><blockquote>
-<p>使用<strong>BETWEEM</strong> xxx <strong>AND</strong> xxx</p>
+<p>使用<strong>BETWEEN</strong> xxx <strong>AND</strong> xxx</p>
 </blockquote>
 <h4 id="4-2-4-空值检查"><a href="#4-2-4-空值检查" class="headerlink" title="4.2.4 空值检查"></a>4.2.4 空值检查</h4><blockquote>
 <p><strong>WHERE</strong>可见见检查空值<strong>NULL</strong></p>
@@ -878,7 +876,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">SELCET</td>
+<td align="center">SELECT</td>
 </tr>
 <tr>
 <td align="center">FROM</td>
@@ -928,7 +926,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <h4 id="13-2-3-联结多个表"><a href="#13-2-3-联结多个表" class="headerlink" title="13.2.3 联结多个表"></a>13.2.3 联结多个表</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> prod_name, vend_name, prod_price, quantity</span><br><span class="line"><span class="keyword">FROM</span> orderitems, products, vendors</span><br><span class="line"><span class="keyword">WHERE</span> products.vend_id <span class="operator">=</span> vendors.vend_id</span><br><span class="line"><span class="keyword">AND</span> orderitems.prod_id <span class="operator">=</span> products.prod_id</span><br><span class="line"><span class="keyword">AND</span> order_num <span class="operator">=</span> <span class="number">20005</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h2 id="14-创建高级联结"><a href="#14-创建高级联结" class="headerlink" title="14. 创建高级联结"></a>14. 创建高级联结</h2><h3 id="14-1-使用表别名"><a href="#14-1-使用表别名" class="headerlink" title="14.1 使用表别名"></a>14.1 使用表别名</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELLECT cust_name, cust_contact</span><br><span class="line"><span class="keyword">FROM</span> customers <span class="keyword">AS</span> c, orders <span class="keyword">AS</span> o, orderitems <span class="keyword">AS</span> oi</span><br><span class="line"><span class="keyword">WHERE</span> c.cust_id <span class="operator">=</span> o.cust_id </span><br><span class="line"><span class="keyword">AND</span> oi.order_num <span class="operator">=</span> o.oprder_num</span><br><span class="line"><span class="keyword">AND</span> prod_id <span class="operator">=</span> <span class="string">&#x27;TNT2&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="14-创建高级联结"><a href="#14-创建高级联结" class="headerlink" title="14. 创建高级联结"></a>14. 创建高级联结</h2><h3 id="14-1-使用表别名"><a href="#14-1-使用表别名" class="headerlink" title="14.1 使用表别名"></a>14.1 使用表别名</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> cust_name, cust_contact</span><br><span class="line"><span class="keyword">FROM</span> customers <span class="keyword">AS</span> c, orders <span class="keyword">AS</span> o, orderitems <span class="keyword">AS</span> oi</span><br><span class="line"><span class="keyword">WHERE</span> c.cust_id <span class="operator">=</span> o.cust_id </span><br><span class="line"><span class="keyword">AND</span> oi.order_num <span class="operator">=</span> o.oprder_num</span><br><span class="line"><span class="keyword">AND</span> prod_id <span class="operator">=</span> <span class="string">&#x27;TNT2&#x27;</span>;</span><br></pre></td></tr></table></figure>
 
 <h3 id="16-2-使用不同类型的联结"><a href="#16-2-使用不同类型的联结" class="headerlink" title="16.2 使用不同类型的联结"></a>16.2 使用不同类型的联结</h3><h4 id="16-2-1-自联结"><a href="#16-2-1-自联结" class="headerlink" title="16.2.1 自联结"></a>16.2.1 自联结</h4><blockquote>
 <p>第一种子查询</p>
@@ -973,7 +971,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-08T19:53:21+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-08T20:25:56+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2021年4月8日</p>
@@ -998,7 +996,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lemon-fruit.github.io/2020/01/31/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/&title=Mysql必知必会 读书笔记 - Lemon_Fruit&summary=MySQL"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lemon-fruit.github.io/2020/01/31/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/&title=Mysql必知必会 读书笔记 - Lemon_Fruit&summary="
           
           >
           
@@ -1010,7 +1008,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://lemon-fruit.github.io/2020/01/31/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/&title=Mysql必知必会 读书笔记 - Lemon_Fruit&summary=MySQL"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://lemon-fruit.github.io/2020/01/31/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/&title=Mysql必知必会 读书笔记 - Lemon_Fruit&summary="
           
           >
           
@@ -1022,7 +1020,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://lemon-fruit.github.io/2020/01/31/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/&title=Mysql必知必会 读书笔记 - Lemon_Fruit&summary=MySQL"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://lemon-fruit.github.io/2020/01/31/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/&title=Mysql必知必会 读书笔记 - Lemon_Fruit&summary="
           
           >
           
@@ -1059,11 +1057,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2020/04/30/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>第一篇博客</p>
-          <p class='content'>第一个博客的搭建
+          <p class='content'>
 1. git仓库的搭建 1git init
 
  
-歌曲</p>
+歌曲
+</p>
         </a>
       
       
