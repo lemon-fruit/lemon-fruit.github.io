@@ -470,9 +470,153 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
+          
+        
+          
+        
       
     
     
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/04/16/%E4%BC%98%E7%82%AB/">
+        优炫面经
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        自我介绍巴拉巴拉
+介绍一下Java学了啥答：主要学了一下 集合 和 线程
+介绍一下集合下的类答：Collection下的 List ，Set，Map, Queue
+注意：Java 集合框架主要包括两种类型的容器，一种是集合（Collection），存储一个元素集合，另一种是图（Map），存储键/值对映射。Collection 接口又有 3 种子类型，List、Set 和 Queue，再下面是...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-04-16</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/04/16/%E4%BC%98%E7%82%AB/'>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+        计算机网络
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        传输层什么是三次握手？
+
+第一次握手：建立连接时，客户端发送syn包（syn = x）到服务器，并进入SYN-SENT（同步已发送）状态，等待服务器确认；SYN：同步序列编号(Synchronize Sequence Numbers)。
+第二次握手：服务器收到syn包，必须确认客户的SYN(ack = x + 1)，同时自己也发送一个SYN包 (syn = y)，即SYN + ACK包，此时...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-04-15</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/'>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/04/11/Redis/">
+        Redis
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        缓存穿透问题描述： 客户端查询根本不存在的数据，使得请求直达存储层，导致其负载过大，甚至宕机。
+原因可能是：业务层误将缓存和库中的数据删除了，也可能是有人恶意攻击，专门访问库中不存在的数 据。
+ 解决方案： 
+
+缓存空对象：存储层未命中后，仍然将空值存入缓存层，客户端再次访问数据时，缓存层会直接返 回空值。 
+布隆过滤器：将数据存入布隆过滤器，访问缓存之前以过滤器拦截，若请求的数据不存在则直...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-04-11</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/04/11/Redis/'>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -811,72 +955,24 @@ OOP七大原则
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/27/mysql%E7%AC%94%E8%AE%B0/">
-        Mysql
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-
-三大范式
-
-第一范式（1NF）
-原子性：保证每一列不可再分
-第二范式（2NF）
-前提：满足第一范式
-每张表只描述一件事情
-第三范式（3NF）
-前提：满足第一范式和第二范式
-第三范式需要确保数据表中的每一列数据都和主键直接相关，而不能间接相关
-规范性和性能的问题
-关联查询的表不得超过三张表
-
-考虑商业化的需求和目标，（成本和用户体验）数据库性能
-规范性
-冗余字段
-
-数据库连接池池化技术：...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-27</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/27/mysql%E7%AC%94%E8%AE%B0/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
     
   </section>
   
+    
+      <br>
+      <div class="prev-next">
+        
+        <p class="current">
+          1 / 2
+        </p>
+        
+          <a class="next" rel="next" href="/archives/2021/page/2/">
+            <section class="post next white-box shadow">
+              &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </section>
+          </a>
+        
+      </div>
     
   
 
@@ -975,7 +1071,7 @@ OOP七大原则
 
 
     <div class='content'>
-      <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 24px; color: #555">笔记</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 14px; color: #999">随笔</a>
+      <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 24px; color: #555">笔记</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 19px; color: #777">随笔</a> <a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 14px; color: #999">面经</a>
     </div>
   </section>
 
