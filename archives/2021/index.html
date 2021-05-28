@@ -822,24 +822,22 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title" >
-      <a href="/2021/03/31/JVM/">
-        JVM
+      <a href="/2021/03/31/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA/">
+        深入理解Java虚拟机
       </a>
     </h2>
   
   <div class='md'>
     
       
-        JMM
-什么是JMM
-
-JMM：java 内存模型
+        一、Java代码是怎么运行的？Java虚拟机具体是怎样运行Java字节码的？
+在 HotSpot 里面，上述翻译过程有两种形式：
 
 
-作用：缓存一致性协议，用于定义数据读写的规则
+第一种是解释执行，即逐条将字节码翻译成机器码并执行；
+第二种是即时编译（Just-In-Time compilation，JIT），即将一个方法中包含的所有字节码编译成机器码后再执行。
 
-
-
+前者的优势在于无需等待编译，而后者的优势在于实际运行速度更快。HotSp...
       
     
   </div>
@@ -852,7 +850,7 @@ JMM：java 内存模型
       </div>
       
         <div>
-          <a class='readmore' href='/2021/03/31/JVM/'>
+          <a class='readmore' href='/2021/03/31/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA/'>
             阅读全文
           </a>
         </div>
