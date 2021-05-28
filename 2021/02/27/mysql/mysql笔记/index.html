@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -24,7 +22,9 @@
 
   <!-- 页面元数据 -->
   
-  <title>归档：2020/1 - Lemon_Fruit</title>
+  <title>Mysql - Lemon_Fruit</title>
+  
+    <meta name="keywords" content="笔记">
   
 
   
@@ -120,7 +120,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <body>
     
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -393,7 +393,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper  dock' style="display: ;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.jpg"></div>
           
@@ -448,36 +448,300 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 
 <div class='l_main'>
-	
-		
-  <section class="post-list">
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
     
+    
+    
+      <h1 class="title">
+        Mysql
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>Lemon</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年2月27日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse busuanzi">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      <p>
+        <span id="busuanzi_value_page_pv">
+          <i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i>
+        </span>
+        次浏览
+      </p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  
+  <!-- more --->
+
+<blockquote>
+<p>三大范式</p>
+</blockquote>
+<p><strong>第一范式（1NF）</strong></p>
+<p>原子性：保证每一列不可再分</p>
+<p><strong>第二范式（2NF）</strong></p>
+<p>前提：满足第一范式</p>
+<p>每张表只描述一件事情</p>
+<p><strong>第三范式（3NF）</strong></p>
+<p>前提：满足第一范式和第二范式</p>
+<p>第三范式需要确保数据表中的每一列数据都和主键直接相关，而不能间接相关</p>
+<p><strong>规范性和性能的问题</strong></p>
+<p>关联查询的表不得超过三张表</p>
+<ul>
+<li>考虑商业化的需求和目标，（成本和用户体验）数据库性能</li>
+<li>规范性</li>
+<li>冗余字段</li>
+</ul>
+<h2 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h2><p><strong>池化技术：准备一些预先的资源，过来就连接预先准备好的</strong></p>
+<blockquote>
+<p>开源数据源</p>
+</blockquote>
+<p>DBCP</p>
+<p>C3P0</p>
+<p>Druid：阿里</p>
+<blockquote>
+<p>DBCP</p>
+</blockquote>
+<p>需要用到 jar 包</p>
+<p>commons-dbcp-x.x ，commons-pool-x.x</p>
+<blockquote>
+<p>C3P0</p>
+</blockquote>
+<p>需要用到 jar 包</p>
+<p>c3p0-x.x ， mchange-commons-java-x.x</p>
+<blockquote>
+<p>Druid</p>
+</blockquote>
+<p>url：<a target="_blank" rel="noopener" href="https://dbaplus.cn/news-155-1531-1.html">https://dbaplus.cn/news-155-1531-1.html</a></p>
+<h2 id="客户端-服务端通信协议"><a href="#客户端-服务端通信协议" class="headerlink" title="客户端/服务端通信协议"></a>客户端/服务端通信协议</h2><p>MySQL客户端/服务端通信协议是“半双工”的：在任一时刻，要么是服务器向客户端发送数据，要么是客户端向服务器发送数据，这两个动作不能同时发生。一旦一端开始发送消息，另一端要接收完整个消息才能响应它，所以我们无法也无须将一个消息切成小块独立发送，也<strong>没有办法进行流量控制</strong></p>
+<ul>
+<li><p>当查询语句很长的时候，需要设置max_allowed_packet参数</p>
+</li>
+<li><p>尽量保持查询简单且只返回必需的数据，减小通信间数据包的大小和数量</p>
+</li>
+</ul>
+<h2 id="查询缓存"><a href="#查询缓存" class="headerlink" title="查询缓存"></a>查询缓存</h2><p>解析一个语句前，如果缓存是开启的，那么Mysql会检查这个查询语句是否命中查询缓存中的数据。如果恰好命中查询缓存，在检查一次用户权限后直接返回缓存中的结果。查询不会被解析，也不会生成执行计划，更不会执行</p>
+<p>如过查询中包括  任何用户自定义函数、存储过程、用户变量、临时表，系统表，不会缓存</p>
+<p>设计上优化</p>
+<ul>
+<li><p>多个小表代替一个大表</p>
+</li>
+<li><p>批量插入代替循环单条插入</p>
+</li>
+<li><p>合理控制缓存空间大小</p>
+</li>
+<li><p>SQL_CACHE 和 SQL_NO_CACH</p>
+</li>
+</ul>
+<p>不要轻易打开查询缓存，特别是写密集型应用。如果你实在是忍不住，可以将query_cache_type设置为DEMAND，这时只有加入SQL_CACHE的查询才会走缓存，其他查询则不会</p>
+<h2 id="B-B-树-mysql-索引"><a href="#B-B-树-mysql-索引" class="headerlink" title="B+ B- 树 mysql 索引"></a>B+ B- 树 mysql 索引</h2><p> <a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000004690721">https://segmentfault.com/a/1190000004690721</a></p>
+<blockquote>
+<p>B-树有如下特点:</p>
+</blockquote>
+<ol>
+<li><p>所有键值分布在整颗树中；</p>
+</li>
+<li><p>任何一个关键字出现且只出现在一个结点中；</p>
+</li>
+<li><p>搜索有可能在非叶子结点结束；</p>
+</li>
+<li><p>在关键字全集内做一次查找,性能逼近二分查找；</p>
+</li>
+</ol>
+<p>5.</p>
+<blockquote>
+<p>B+树是B-树的变体，也是一种多路搜索树, 它与 B- 树的不同之处在于:</p>
+</blockquote>
+<ol>
+<li><p>所有关键字存储在叶子节点出现,内部节点(非叶子节点并不存储真正的 data)</p>
+</li>
+<li><p>为所有叶子结点增加了一个链指针</p>
+</li>
+</ol>
+
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=https://lemon-fruit.github.io/2021/02/27/mysql/mysql%E7%AC%94%E8%AE%B0/>https://lemon-fruit.github.io/2021/02/27/mysql/mysql%E7%AC%94%E8%AE%B0/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-08T20:25:42+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年4月8日</p>
+  </a>
+</div>
+
+        
       
         
           
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%AC%94%E8%AE%B0/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>笔记</p></a></div>
+
+
         
       
-    
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/01/31/mysql/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/">
-        Mysql必知必会 读书笔记
-      </a>
-    </h2>
-  
-  <div class='md'>
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lemon-fruit.github.io/2021/02/27/mysql/mysql%E7%AC%94%E8%AE%B0/&title=Mysql - Lemon_Fruit&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
     
       
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://lemon-fruit.github.io/2021/02/27/mysql/mysql%E7%AC%94%E8%AE%B0/&title=Mysql - Lemon_Fruit&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://lemon-fruit.github.io/2021/02/27/mysql/mysql%E7%AC%94%E8%AE%B0/&title=Mysql - Lemon_Fruit&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
         
+      
+        
+          
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2021/02/28/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>设计模式</p>
+          <p class='content'>设计模式设计模式
+
+
+创建型模式
+
+单例模式，工厂模式，抽象工厂模式，建造者模式，原型模式
+
+结构型模式
+
+适配器模式，桥接模式，装饰模式，组合模式，外观模式，享元模式，代理模式
+
+行为型模式
+...</p>
+        </a>
+      
+      
+        <a class='next' href='/2020/01/31/mysql/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/'>
+          <p class='title'>Mysql必知必会 读书笔记<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>
 
 1. 使用MySQL1.1 连接1mysql -u root -p
 
@@ -486,50 +750,30 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 1.3 了解数据库和表
 返回可用数据库的一个列表
 
-1SHOW DATABASES;
-
-
-返回当前选择的数据库内可用表的列表
-
-1SHOW TABLES
-
-2. 检索数据2.1 检索单个列
-利用SELECT语句从products表中检索一个名为pros_name的列
-
-12SELE...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-01-31</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/01/31/mysql/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/'>
-            阅读全文
-          </a>
-        </div>
+1SHOW DATABASES...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
+  </article>
 
 
-	
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -537,103 +781,28 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Lemon_Fruit</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/Lemon-Fruit"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
-    
-    
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 24px; color: #555">笔记</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 14px; color: #999">随笔</a> <a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 14px; color: #999">面经</a>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0"><span class="toc-text">数据库连接池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-text">客户端&#x2F;服务端通信协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E7%BC%93%E5%AD%98"><span class="toc-text">查询缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#B-B-%E6%A0%91-mysql-%E7%B4%A2%E5%BC%95"><span class="toc-text">B+ B- 树 mysql 索引</span></a></li></ol>
     </div>
   </section>
 
 
   
 
-  
-
 
 </aside>
+
 
 
 		  
@@ -642,21 +811,21 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="Mysql";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
   
     // cover
     var cover_wrapper=document.querySelector('.cover-wrapper');
     
-    cover_wrapper.id="half";
-    cover_wrapper.style.display="";
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
     
   
 </script>

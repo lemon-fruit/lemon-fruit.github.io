@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -24,9 +22,16 @@
 
   <!-- 页面元数据 -->
   
-  <title>归档：2020/1 - Lemon_Fruit</title>
+  <title>CPU上下文切换 - Lemon_Fruit</title>
+  
+    <meta name="keywords" content="随笔">
   
 
+  
+    <meta name="description" content="CPU上下文切换
+什么是CPU上下文
+
+​ CPU 上下文就是CPU 寄存器和__程序计数器__，它们都是 CPU 在运行任何任务前，必须的依赖环境.">
   
 
   <!-- feed -->
@@ -120,7 +125,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <body>
     
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -393,7 +398,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper  dock' style="display: ;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.jpg"></div>
           
@@ -448,88 +453,290 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 
 <div class='l_main'>
-	
-		
-  <section class="post-list">
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
     
-      
+    
+    
+      <h1 class="title">
+        CPU上下文切换
+      </h1>
+      <div class='new-meta-box'>
         
           
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>Lemon</p>
+  </a>
+</div>
+
+          
         
-      
-    
-    
-      
+          
+            
+
+          
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/01/31/mysql/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/">
-        Mysql必知必会 读书笔记
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年4月8日</p>
+  </a>
+</div>
+
+          
         
-
-1. 使用MySQL1.1 连接1mysql -u root -p
-
-1.2 选择数据库1USE xxx
-
-1.3 了解数据库和表
-返回可用数据库的一个列表
-
-1SHOW DATABASES;
-
-
-返回当前选择的数据库内可用表的列表
-
-1SHOW TABLES
-
-2. 检索数据2.1 检索单个列
-利用SELECT语句从products表中检索一个名为pros_name的列
-
-12SELE...
-      
-    
+          
+            
+  <div class="new-meta-item browse busuanzi">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      <p>
+        <span id="busuanzi_value_page_pv">
+          <i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i>
+        </span>
+        次浏览
+      </p>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+
+
+          
         
-        <time>2020-01-31</time>
+          
+            
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  
+  <h2 id="CPU上下文切换"><a href="#CPU上下文切换" class="headerlink" title="CPU上下文切换"></a>CPU上下文切换</h2><blockquote>
+<p>什么是CPU上下文</p>
+</blockquote>
+<p>​ CPU 上下文就是<strong>CPU 寄存器</strong>和__程序计数器__，它们都是 CPU 在运行任何任务前，必须的依赖环境.</p>
+<span id="more"></span>
+
+<blockquote>
+<p>CPU上下文切换的类型：</p>
+</blockquote>
+<ul>
+<li><p>进程上下文切换</p>
+</li>
+<li><p>线程上下文切换</p>
+</li>
+<li><p>中断上下文切换</p>
+</li>
+</ul>
+<blockquote>
+<p>系统调用</p>
+</blockquote>
+<ul>
+<li>从用户态到内核态转变，需要用到<strong>系统调用</strong></li>
+<li><strong>一次系统调用的过程，其实发生了两次CPU上下文问切换</strong></li>
+<li><strong>系统调用过程中一直是同一个进程在运行</strong></li>
+</ul>
+<blockquote>
+<p>进程上下文切换</p>
+</blockquote>
+<ul>
+<li>进程是由内核来管理和调度的，进程的切换只能发生在内核态</li>
+</ul>
+<blockquote>
+<p>线程上下文切换</p>
+</blockquote>
+<ul>
+<li>线程是调度的基本单位，而进程则是资源拥有的基本单位</li>
+<li>线程有自己的私有数据，比如栈和寄存器</li>
+</ul>
+<blockquote>
+<p>中断上下文切换</p>
+</blockquote>
+<ul>
+<li>对同一个CPU，中断处理比进程拥有跟高的优先级</li>
+<li>中断上下文切换并不涉及到进程的用户态</li>
+</ul>
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2020/01/31/mysql/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/'>
-            阅读全文
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=https://lemon-fruit.github.io/2021/04/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/CPU%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2/>https://lemon-fruit.github.io/2021/04/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/CPU%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-08T20:16:03+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年4月8日</p>
+  </a>
 </div>
 
-          </div>
         
       
-    
-  </section>
+        
+          
   
-    
-  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E9%9A%8F%E7%AC%94/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>随笔</p></a></div>
 
 
-	
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lemon-fruit.github.io/2021/04/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/CPU%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2/&title=CPU上下文切换 - Lemon_Fruit&summary=CPU上下文切换
+什么是CPU上下文
+
+​ CPU 上下文就是CPU 寄存器和__程序计数器__，它们都是 CPU 在运行任何任务前，必须的依赖环境."
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://lemon-fruit.github.io/2021/04/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/CPU%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2/&title=CPU上下文切换 - Lemon_Fruit&summary=CPU上下文切换
+什么是CPU上下文
+
+​ CPU 上下文就是CPU 寄存器和__程序计数器__，它们都是 CPU 在运行任何任务前，必须的依赖环境."
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://lemon-fruit.github.io/2021/04/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/CPU%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2/&title=CPU上下文切换 - Lemon_Fruit&summary=CPU上下文切换
+什么是CPU上下文
+
+​ CPU 上下文就是CPU 寄存器和__程序计数器__，它们都是 CPU 在运行任何任务前，必须的依赖环境."
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+        
+          
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2021/04/10/mysql/Mysql45%E8%AE%B2/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Mysql 45讲 读书笔记</p>
+          <p class='content'>一条SQL查询语句是如何执行的
+连接器
+连接器: 连接器与 客户端建立连接，获取权限，维持和管理连接
+
+
+数据库里面，长连接是指连接成功后，如果客户端持续有请求，则一直使用同一个连接。
+
+短连接...</p>
+        </a>
+      
+      
+        <a class='next' href='/2021/03/31/Java/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA/'>
+          <p class='title'>深入理解Java虚拟机<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>一、Java代码是怎么运行的？Java虚拟机具体是怎样运行Java字节码的？
+在 HotSpot 里面，上述翻译过程有两种形式：
+
+第一种是解释执行，即逐条将字节码翻译成机器码并执行；
+第二种是...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -537,103 +744,28 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Lemon_Fruit</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/Lemon-Fruit"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
-    
-    
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 24px; color: #555">笔记</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 14px; color: #999">随笔</a> <a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 14px; color: #999">面经</a>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2"><span class="toc-text">CPU上下文切换</span></a></li></ol>
     </div>
   </section>
 
 
   
 
-  
-
 
 </aside>
+
 
 
 		  
@@ -642,21 +774,21 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="CPU上下文切换";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
   
     // cover
     var cover_wrapper=document.querySelector('.cover-wrapper');
     
-    cover_wrapper.id="half";
-    cover_wrapper.style.display="";
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
     
   
 </script>
