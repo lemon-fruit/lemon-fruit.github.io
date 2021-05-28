@@ -656,7 +656,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </li>
 </ul>
 <p>官方自带的逻辑备份工具mysqldump，当mysqldump使用参数–single-transaction的时候，会启动一个事务，确保拿到一致性视图。而由于MVCC的支持，这个过程中数据是可以正常更新的。</p>
-<p>​ 一致性读是好，但是前提是引擎要支持这个隔离级别。<br>如果要全库只读，为什么不使用set global readonly = true的方式？</p>
+<p> 一致性读是好，但是前提是引擎要支持这个隔离级别。<br>如果要全库只读，为什么不使用set global readonly = true的方式？</p>
 <ul>
 <li>在有些系统中，readonly的值会被用来做其他逻辑，比如判断主备库。所以修改global变量的方式影响太大。</li>
 <li>在异常处理机制上有差异。如果执行FTWRL命令之后由于客户端发生异常断开，那么MySQL会自动释放这个全局锁，整个库回到可以正常更新的状态。而将整个库设置为readonly之后，如果客户端发生异常，则数据库就会一直保持readonly状态，这样会导致整个库长时间处于不可写状态，风险较高。</li>
@@ -738,10 +738,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-25T11:51:22+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-05-28T22:12:31+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2021年4月25日</p>
+    <p>更新于：2021年5月28日</p>
   </a>
 </div>
 
